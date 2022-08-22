@@ -1,0 +1,49 @@
+.Topic {
+    position: relative;
+    margin-top: 30px;
+    display: grid;
+    row-gap: 10px;
+    column-gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    box-shadow: 20px 10px 0 rgba(rgb(88, 120, 88), green, rgb(51, 51, 84), 1);
+}
+.topic_list {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 10px 10px 10px rgb(51, 51, 84), 0 -10px 10px rgb(108, 108, 219), -10px 0 10px rgb(204, 197, 62);
+}
+a {
+    padding: 30px 25px;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: brown;
+    color: forestgreen;
+    display: inline-block;
+    cursor: pointer;
+    align-self: flex-end;
+    border-radius: 50%;
+}
+a:hover {
+    box-shadow: 0 0 20px brown, 0 0 40px brown, 0 0 80px brown, 0 0 120px brown;
+}
+.tip{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 400px;
+    background-color: rgb(101, 101, 183);
+    position: absolute;
+    z-index: 2000;
+    border-radius: 20px;
+    top: 50%;
+    left: 35%;
+}
+
+.tip h1,.tip button{
+    margin-left: 120px;
+    justify-items: center;
+    align-items: center;
+}
+.tip button{
+    margin-top: 220px;
+}

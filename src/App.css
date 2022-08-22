@@ -3,8 +3,28 @@
   padding: none;
   box-sizing: border-box;
 }
+::-webkit-scrollbar {
+  width: 0.6rem;
+  background-color: rgb(93, 0, 155);
+  border-radius: 1rem;
+}
+::-webkit-scrollbar-thumb {
+  box-shadow: 0 0 20px salmon, 0 0 40px salmon, 0 0 80px salmon,
+    0 0 120px salmon;
+  background-color: hsl(228, 79%, 42%);
+  border-radius: 1rem;
+}
+::-webkit-scrollbar-thumb:hover {
+  box-shadow: 0 0 20px salmon, 0 0 40px salmon, 0 0 80px salmon,
+    0 0 120px salmon;
+  background-color: hsl(228, 79%, 72%);
+}
 body{
-  
+  margin-left: 40px;
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(67deg,rgba(233, 230, 230, 0.5),rgb(174, 228, 167));
+  background-repeat: no-repeat;
 }
 button{
   background-color: palegreen;
@@ -24,4 +44,25 @@ button:hover{
 }
 button:active{
   transform: scale(0.4);
+}
+.btn_div {
+  display: flex;
+  flex-direction: column;
+}
+span{
+  display: block;
+  margin-top: 10px;
+  /* align-self: center; */
+  height: 50px;
+  width: 50px;
+  background-color: aqua;
+  animation: spin 3s ease-in infinite;
+}
+@keyframes spin {
+  0%{transform: rotateZ(0deg);}
+  100%{transform: rotateZ(360deg);}
+}
+#root{
+  position: relative;
+  height: 100%;
 }

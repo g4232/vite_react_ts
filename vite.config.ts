@@ -2,7 +2,6 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path, { resolve } from 'path';
 import alias from '@rollup/plugin-alias';
-import eslintPlugin from 'vite-plugin-eslint';
 
 export default defineConfig({
     plugins: [
@@ -12,7 +11,7 @@ export default defineConfig({
             // Only .tsx files
             include: '**/*.tsx'
         }),
-        eslintPlugin(),
+
         alias({
             entries: [{ find: '@', replacement: path.resolve(__dirname, 'src') }]
         })
@@ -20,5 +19,14 @@ export default defineConfig({
     esbuild: {
         jsxFactory: 'h',
         jsxFragment: 'Fragment'
+    },
+    server: {
+        proxy: {
+            '/api': {
+                target: 'http://127.0.0.1:5000',
+                changeOrigin: true,
+                rewrite: (path) => path.replace(/^\/api/, '')
+            }
+        }
     }
 });

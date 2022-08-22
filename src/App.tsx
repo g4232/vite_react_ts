@@ -1,19 +1,24 @@
 import './App.css';
-import React, { useEffect, useState } from 'react';
-import fn from '@/text';
-function App() {
-    const [count, setcount] = useState<number>(0);
-    useEffect(() => {
-        fn();
-    }, []);
+import axios from 'axios';
+import React, { useCallback, useEffect, useState } from 'react';
+import Toolbar from '../compents/Toolbar';
+import { themes, Topic } from './interface';
+import TopicDiv from '../compents/topic';
+export const ThemeContent = React.createContext(themes);
 
+export default function App() {
+    const [data, setdata] = useState<Topic[]>([]);
+    const getTopic = useCallback(async () => {
+        const result = await axios.get<Topic[]>('/api/topic');
+        setdata(result.data);
+    },[data]);
+    useEffect(() => {
+        getTopic();
+    }, []);
     return (
-        <div className="App">
-            <span style={{ background: 'react.svg' }}>{count}</span>
-            <h1>hello vite</h1>
-            <button onClick={() => setcount(count + 1)}>点我增加</button>
-        </div>
+        <ThemeContent.Provider value={themes}>
+            <Toolbar />
+            <TopicDiv props={data} />
+        </ThemeContent.Provider>
     );
 }
-
-export default App;
